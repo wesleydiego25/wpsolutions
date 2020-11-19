@@ -1,28 +1,341 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="Wesley Diego Silva">
+    <meta name="description" content="Luna, IT, Ti, Soluções de Ti, infraestrutura, monitoramento, suporte, implantação, tecnologia, NOC, Gestão, Processos de TI, Gestão de Capacidade">
+    <meta name="keywords" content="Luna, IT, Ti, Soluções de Ti, infraestrutura, monitoramento, suporte, implantação, tecnologia, NOC, Gestão, Processos de TI, Gestão de Capacidade, serviços financeiros, Infraestrutura, serviços, contratos, portofólio">
+    <meta name="robots" content="index, follow">
+    <meta name="revisit-after" content="1 day">
+    <meta name="language" content="Portuguese">
+    <meta name="generator" content="N/A">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 
-    <title>Hello, world!</title>
-  </head>
-  <body>
-    <h1>Hello, world!</h1>
 
-    <!-- Optional JavaScript; choose one of the two! -->
+    <title>Luna IT Solutions</title>
 
-    <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" href="img/logo.png" />
 
-    <!-- Option 2: jQuery, Popper.js, and Bootstrap JS
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
-    -->
-  </body>
+    <!-- Custom fonts for this template -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+
+    <!-- Plugin CSS -->
+    <link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <!-- <link href="css/creative.css" rel="stylesheet"> -->
+    <link href="css/creative.min.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body id="page-top">
+
+<?php 
+if (isset($_POST['BTEnvia'])){
+
+
+require_once('PHPMailer/PHPMailer/PHPMailerAutoload.php');
+
+$mail = new PHPMailer(); // create a new object
+$mail->IsSMTP(); // enable SMTP
+$mail->SMTPDebug = false; // debugging: 1 = errors and messages, 2 = messages only
+$mail->SMTPAuth = true; // authentication enabled
+$mail->SMTPSecure = 'ssl'; // secure transfer enabled REQUIRED for Gmail
+$mail->Host = "smtp.gmail.com";
+$mail->Port = 465; // or 587
+$mail->IsHTML(true);
+$mail->Username = "wesleynoreply25@gmail.com";
+$mail->Password = "123456@@123456";
+$mail->SetFrom("wesleynoreply25@gmail.com", $_POST['nome']);
+$mail->Subject = $_POST['nome'] . " Teve interesse atraves do site";
+$mail->Body = $_POST['mensagem'];
+$mail->AddAddress($_POST['email'], $_POST['nome']);
+$mail->Send();
+/*
+ if(!$mail->Send()) {
+    echo "Mailer Error: " . $mail->ErrorInfo;
+ } else {
+    echo "Message has been sent";
+ }
+*/
+}
+
+ ?>
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+            <div class="container">
+                <a class="navbar-brand js-scroll-trigger" href="#page-top">Luna IT Solutions</a>
+                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <!-- navegação -->
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link js-scroll-trigger" href="#about">Sobre</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link js-scroll-trigger" href="#services">Soluções</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link js-scroll-trigger" href="#portfolio">Catálogo</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link js-scroll-trigger" href="#contact">Contato</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Navegação -->
+            </div>
+        </nav>
+
+        <header class="masthead text-center text-white d-flex">
+            <div class="container my-auto">
+            </div>
+        </header>
+        
+        <section class="bg-primary" id="about">
+            
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 mx-auto text-center">
+                        <h2 class="section-heading text-white">SEMPRE PREPARADOS PARA ATENDER A SUA NECESSIDADE</h2>
+                        <hr class="light my-4" />
+                        <p class="text-faded mb-4">Somos uma empresa situada em São Paulo, com grande expertise em monitoração de serviços e infraestrutura, formada por profissionais especializados prestando serviços de alta qualidade.</p>
+                        <p class="text-faded mb-4">Usando técnologias mais atuais para manter seus serviços disponíveis, operando dia e noite para garantir o funcionamento e melhoria do seu negócio.</p>
+
+
+                        <a class="btn btn-light btn-xl js-scroll-trigger" href="#Missao">Nossa missão</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Missão -->
+        <section id="Missao">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <h2 class="section-heading text-primary">Missão</h2>
+                        <hr class="my-4" />
+                    </div>
+                    <div class="col-lg-8 mx-auto text-center">
+                        <h2 class="section-heading text-white"></h2>
+                        <p class="text-faded mb-4">Ajudar a desenvolver a infraestrutura dos nossos clientes baseando-se nas melhores práticas e na transformação digital.</p>
+                        <p class="text-faded mb-4">Garantir a qualidade e assertividade do serviço de monitoração com custo operacional baixo.</p>
+                        <p class="text-faded mb-4">Ser parceiro do negócio do nosso cliente.</p>
+
+                        <a class="btn btn-light btn-xl js-scroll-trigger" href="#services">Veja mais!</a>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section id="services">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <h2 class="section-heading">Soluções</h2>
+                        <hr class="my-4" />
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 text-center">
+                        <div class="service-box mt-5 mx-auto">
+                            <i class="foco fa fa-4x fa-cogs text-primary-s mb-3 sr-icons"></i>
+                            <h3 class="mb-3">Autonomia</h3>
+                            <p class="text-muted mb-0">Plataforma de monitoração autônoma que vai diminuir os impactos na sua infraestrutura</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 text-center">
+                        <div class="service-box mt-5 mx-auto">
+                            <i class="fa fa-4x fa-bullseye text-primary-s mb-3 sr-icons"></i>
+                            <h3 class="mb-3">Governança</h3>
+                            <p class="text-muted mb-0">Controle de todos os processos que vão melhorar seu negócio</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 text-center">
+                        <div class="service-box mt-5 mx-auto">
+                            <i class="fa fa-4x fa-file-zip-o text-primary-s mb-3 sr-icons"></i>
+                            <h3 class="mb-3">Relatórios</h3>
+                            <p class="text-muted mb-0">Resports diários referente a disponibilidade de seus componentes de TI</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 text-center">
+                        <div class="service-box mt-5 mx-auto">
+                            <i class="fa fa-4x fa-bar-chart-o text-primary-s mb-3 sr-icons"></i>
+                            <h3 class="mb-3">Analise e melhorias</h3>
+                            <p class="text-muted mb-0">Projeto de melhoria contínua de serviços e infraestrutura</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call center -->
+        <section class="p-0" id="portfolio">
+               <h1 class="text-center">NOSSOS SERVIÇOS</h1> 
+               <hr />
+               <div class="container">
+                   <div class="row">
+                        <div class="col-md-6">
+                            <div class="card">
+                                <img class="card-img-top" src="img/portfolio/fullImg/callCenter.jpg" alt="Card image cap">
+                                <div class="card-body">
+                                   <h5 class="card-title border-bottom pb-3 text-center">Plataforma digital NOC</h5>
+                                   <p class="card-text"></p>
+                                   <a href="#contact" class="btn btn-sm btn-light float-left js-scroll-trigger">Orçamento <i class="fa fa-angle-double-down"></i></a>
+                                   <a href="Catalogos/digitalNOC.php" class="btn btn-sm btn-dark text-white float-right">Leia mais <i class="fa fa-angle-double-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="card">
+                                <img class="card-img-top" src="img/portfolio/fullImg/provedorInternet3.jpg" alt="Card image cap">
+                                <div class="card-body">
+                                   <h5 class="card-title border-bottom pb-3 text-center">Serviços diversos </h5>
+                                   <p class="card-text"></p>
+                                   <a href="#contact" class="btn btn-sm btn-light float-left js-scroll-trigger">Orçamento <i class="fa fa-angle-double-down"></i></a>
+                                   <a href="Catalogos/servicosDiversos.php" class="btn btn-sm btn-dark text-white float-right">Leia mais <i class="fa fa-angle-double-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--<div class="col-md-4">
+                            <div class="card">
+                                <img class="card-img-top" src="img/portfolio/fullImg/ChatBot1.jpg" alt="Card image cap">
+                                <div class="card-body">
+                                   <h5 class="card-title border-bottom pb-3 text-center">ChatBot </h5>
+                                   <p class="card-text"></p>
+                                   <a href="#contact" class="btn btn-sm btn-light float-left js-scroll-trigger">Orçamento <i class="fa fa-angle-double-down"></i></a>
+                                   <a href="Catalogos/ChatBot.php" class="btn btn-sm btn-dark text-white float-right">Leia mais <i class="fa fa-angle-double-right"></i></a>
+                                </div>
+                            </div>
+                        </div>-->
+
+                   </div>
+               </div>
+
+               
+        <section id="contact" class="mx-auto">
+                <div class="row">
+                    <div class="col-lg-8 mx-auto text-center">
+                        <h2 class="section-heading">Pronto para começar uma parceria conosco?</h2>
+                        <hr />
+                        <p>Isso é ótimo! Ligue para nós ou envie-nos um e-mail e entraremos em contato o mais breve possível!</p>
+                    </div>
+                </div>
+                    <hr />
+            <div class="text-center">
+                <i class="fa fa-envelope text-primary-s"> contato@lunait.com.br</i> | 
+                <a href="http://api.whatsapp.com/send?1=pt_BR&phone=5511963080192"><i class="fa fa-whatsapp text-primary-s"> +55(11)96308-0192</i></a>
+            </div>
+        <div class="container mew_form">
+            <form method="POST">
+            <div class="row">
+                    <div class="col-sm-6">
+                         <input type="text" size="30" name="nome" placeholder="Nome" class="form_inputs text-center" style="border-color: black!important">
+                    </div>
+                    <br />
+                    <div class="col-sm-6">
+                        <input type="text" size="30" name="email" placeholder="E-mail" class="form_inputs text-center" style="border-color: black!important">
+                    </div>
+            </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <textarea name="mensagem" id="mensagem" cols="35" rows="5" placeholder="Mensagem" class="form_inputs text-center" style="max-height: 200px; max-width: 1600px; min-height: 100px; min-width: 100px; border-color: black!important"></textarea>
+                    </div>
+                </div>
+                <input type="submit" name="BTEnvia" value="Enviar" class="btn-enviar-email">
+            </form>
+        </div>
+
+        </section>
+
+
+
+        <section id="colaboradores">
+            <div class="container mx-auto cCorpoMaster">
+                <h3 class="text-center text-primary-colaborador">Conte com nossa equipe</h3>
+                <div class="row">
+                    <div class="col-md-3 cCorpo text-center">
+                        <!-- Veronica -->
+                        <img src="img/portfolio/Colaboradores/veronica2.jpg" class="img-circle" alt="Cinque Terre" width="200" height="200"> 
+                        <div class="box-content text-primary-colaborador">
+                            <h3 class="title">Verônica</h3>
+                            <span class="post">Diretora de relacionamento com cliente</span>
+                        </div>                                                                   
+                    </div>
+                    <div class="col-md-3 cCorpo text-center">
+                        <!-- Thiago -->
+                        <img src="img/portfolio/Colaboradores/ThiagoLuna1.jpg" class="img-circle" alt="Cinque Terre" width="200" height="200"> 
+                        <div class="box-content text-primary-colaborador">
+                            <h3 class="title">Thiago</h3>
+                            <span class="post">Diretor de Infraestrutura</span>
+                        </div> 
+                    </div>                                       
+                    <div class="col-md-3 cCorpo text-center">
+                        <!-- Ronaldo -->
+                        <img src="img/portfolio/Colaboradores/RonaldoLuna1.jpg" class="img-circle" alt="Cinque Terre" width="200" height="200"> 
+                        <div class="box-content text-primary-colaborador">
+                            <h3 class="title">Ronaldo</h3>
+                            <span class="post">Diretor de serviços</span>
+                        </div>                                                                   
+                    </div>
+                    <div class="col-md-3 cCorpo text-center">
+                        <!-- Sara -->
+                        <img src="img/portfolio/Colaboradores/saragabriela1.jpg" class="img-circle" alt="Cinque Terre" width="200" height="200"> 
+                        <div class="box-content text-primary-colaborador">
+                            <h3 class="title">Sara Gabriela</h3>
+                            <span class="post">Suporte e Comercial</span>
+                        </div> 
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ScrollToTop Button -->
+        <a class="GoBack js-scroll-trigger" href="#page-top"><span class="fa fa-2x fa-chevron-up"></span></a>
+        <!-- ScrollToTop Button END-->
+
+        <footer>
+            <a href="https://www.facebook.com/lunaitsolution/"><i class="text-primary-footer fa fa-facebook-square fa-3x mb-3" style="margin-right: 10px;"></i></a>
+            <a href="https://www.instagram.com/lunait_solutions/?hl=pt-br"><i class="text-primary-footer fa fa-instagram fa-3x mb-3" style="margin-right: 10px;"></i></a>
+            <a href="https://www.linkedin.com/mwlite/company/11802759"><i class="text-primary-footer fa fa-linkedin-square fa-3x mb-3"></i></a>
+            <p>
+                © 2019 Luna IT Solutions, Todos os direitos reservados.
+            </p>
+        </footer>
+
+        <!-- Bootstrap core JavaScript -->
+        <script src="vendor/jquery/jquery.min.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+        <!-- Plugin JavaScript -->
+        <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+        <script src="vendor/scrollreveal/scrollreveal.min.js"></script>
+        <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+
+        <!-- Custom scripts for this template -->
+        <script src="js/creative.min.js"></script>
+</body>
 </html>
